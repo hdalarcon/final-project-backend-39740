@@ -130,5 +130,16 @@
     "stock": 50,
     "category": "Bermuda",
     "thumbnail": "Sin imagen"
+  },
+  {
+    "id": 13,
+    "title": "Producto prueba 13",
+    "description": "Esto es un producto prueba 13",
+    "code": "abc12344",
+    "price": 372,
+    "status": true,
+    "stock": 40,
+    "category": "Remera",
+    "thumbnail": "Sin imagen"
   }
 ]

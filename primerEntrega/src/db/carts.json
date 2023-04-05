@@ -16,11 +16,11 @@
       },
       {
         "id": 1,
-        "quantity": 2
+        "quantity": 3
       },
       {
         "id": 25,
-        "quantity": 2
+        "quantity": 3
       }
     ]
   },
@@ -55,6 +55,10 @@
     "products": [
       {
         "id": 6,
+        "quantity": 1
+      },
+      {
+        "id": 1,
         "quantity": 1
       }
     ]

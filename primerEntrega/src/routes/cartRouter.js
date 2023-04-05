@@ -31,7 +31,6 @@ cartRouter.post("/",async (req, res)=>{
 })
 
 cartRouter.post('/:cid/product/:pid', async (req, res) => {
-    try {
         const cartId = +req.params.cid
         const productId = +req.params.pid
 
@@ -39,14 +38,10 @@ cartRouter.post('/:cid/product/:pid', async (req, res) => {
 
         if(!existProduct){
             res.status(404).send(`No se ha encontrado el id ${productId} en la lista de productos.`);
-        } 
+        }  
         const result = await cartManager.addProductToCartById(cartId, productId)
 
         res.status(201).send(result);
-
-    } catch (error) {
-        res.status(500).send(error);
-    }
 })
 
 
