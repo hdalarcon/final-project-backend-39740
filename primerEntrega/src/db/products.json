@@ -1,0 +1,134 @@
+[
+  {
+    "id": 1,
+    "title": "Producto prueba 1",
+    "description": "Esto es un producto prueba 1",
+    "code": "abc12345",
+    "price": 350,
+    "status": true,
+    "stock": 35,
+    "category": "Remera",
+    "thumbnail": "Sin imagen"
+  },
+  {
+    "id": 2,
+    "title": "Producto prueba 2",
+    "description": "Esto es un producto prueba 2",
+    "code": "abc23456",
+    "price": 250,
+    "status": true,
+    "stock": 25,
+    "category": "Bermuda",
+    "thumbnail": "Sin imagen"
+  },
+  {
+    "id": 3,
+    "title": "Producto prueba 3",
+    "description": "Esto es un producto prueba 3",
+    "code": "abc34567",
+    "price": 225,
+    "status": true,
+    "stock": 30,
+    "category": "Campera",
+    "thumbnail": "Sin imagen"
+  },
+  {
+    "id": 4,
+    "title": "Producto prueba 4",
+    "description": "Esto es un producto prueba 4",
+    "code": "abc45678",
+    "price": 210,
+    "status": true,
+    "stock": 50,
+    "category": "Remera",
+    "thumbnail": "Sin imagen"
+  },
+  {
+    "id": 5,
+    "title": "Producto prueba 5",
+    "description": "Esto es un producto prueba 5",
+    "code": "abc56789",
+    "price": 335,
+    "status": true,
+    "stock": 40,
+    "category": "Remera",
+    "thumbnail": "Sin imagen"
+  },
+  {
+    "id": 6,
+    "title": "Producto prueba 6",
+    "description": "Esto es un producto prueba 6",
+    "code": "abc67891",
+    "price": 200,
+    "status": true,
+    "stock": 20,
+    "category": "Remera",
+    "thumbnail": "Sin imagen"
+  },
+  {
+    "id": 7,
+    "title": "Producto prueba 7",
+    "description": "Esto es un producto prueba 7",
+    "code": "abc78912",
+    "price": 240,
+    "status": true,
+    "stock": 30,
+    "category": "Pantalon",
+    "thumbnail": "Sin imagen"
+  },
+  {
+    "id": 8,
+    "title": "Producto prueba 8",
+    "description": "Esto es un producto prueba 8",
+    "code": "abc89123",
+    "price": 260,
+    "status": true,
+    "stock": 45,
+    "category": "Pantalon",
+    "thumbnail": "Sin imagen"
+  },
+  {
+    "id": 9,
+    "title": "Producto prueba 9",
+    "description": "Esto es un producto prueba 9",
+    "code": "abc91234",
+    "price": 270,
+    "status": true,
+    "stock": 15,
+    "category": "Campera",
+    "thumbnail": "Sin imagen"
+  },
+  {
+    "id": 10,
+    "title": "Producto prueba 10",
+    "description": "Esto es un producto prueba 10",
+    "code": "abc98765",
+    "price": 325,
+    "status": true,
+    "stock": 35,
+    "category": "Bermuda",
+    "thumbnail": "Sin imagen"
+  },
+  {
+    "id": 11,
+    "title": "Producto prueba 11",
+    "description": "Esto es un producto prueba 11",
+    "code": "abc98778",
+    "price": 350,
+    "status": true,
+    "stock": 50,
+    "category": "Bermuda",
+    "thumbnail": "Sin imagen"
+  },
+  {
+    "id": 12,
+    "title": "Producto prueba 12",
+    "description": "Esto es un producto prueba 12",
+    "code": "abc98779",
+    "price": 350,
+    "status": true,
+    "stock": 50,
+    "category": "Bermuda",
+    "thumbnail": "Sin imagen"
+  }
+]
