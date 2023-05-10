@@ -29,12 +29,7 @@ class ProductMongooseDao{
                 sort: sort && { price: SORTVALUE[sort] },
             };
 
-            const filters = {
-                status: true,
-                filter: query && { filter: { query } }
-            };
-
-            const { docs, ...rest } = await productSchema.paginate(filters, options)
+            const { docs, ...rest } = await productSchema.paginate(query, options)
             const products = docs.map(item => ({
                 id: item._id,
                 title: item.title,

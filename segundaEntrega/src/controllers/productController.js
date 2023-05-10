@@ -1,24 +1,12 @@
 
 import ProductManager from "../manager/productManager.js";
 
-export const getAll_old = async (req,res)=>{
-    try {
-        const manager =  new ProductManager();
-
-        const products = await manager.find();
-        res.send({ status: 'success', products });
-
-    } catch (error) {
-        res.status(400).send(error.message);
-    }
-};
-
-
 export const getAll = async  (req, res) =>
-{
-    const { query, limit, page, sort } = req.query;
+{   
+    const { limit, page, sort } = req.query;
+    let query = {}
+    if(req.query.category || req.query.status) query = req.query
     const manager = new ProductManager();
-
     const products = await manager.paginate({ query, limit, page, sort });
 
     res.send({ status: 'success', products: products.docs, ...products, docs: undefined });
@@ -28,7 +16,6 @@ export const getAll = async  (req, res) =>
 export const save = async (req,res)=>{
     try {
         const manager =  new ProductManager();
-
         const product = await manager.create(req.body);
         res.send({ status: 'success', product, message: 'Product created.' })
     } catch (error) {
