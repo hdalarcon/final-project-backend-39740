@@ -5,11 +5,6 @@ class CartManager{
         this.cartDao = new CartMongooseDao();
     }
 
-    async getAll(){
-        const cart = await this.cartDao.getAll();
-        return cart;
-    }
-
     async getOne(){
         const cart = await this.cartDao.getAll();
         return cart;
@@ -55,7 +50,7 @@ class CartManager{
 
     async updateProducts(item, cid) {
         try {
-            return this.cartDao.updateProductsByCartId(item, cid);
+            return this.cartDao.updateProducts(item, cid);
         } catch (error) {
             throw error;
         }

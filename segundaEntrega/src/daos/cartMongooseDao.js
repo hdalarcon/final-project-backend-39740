@@ -2,9 +2,10 @@ import cartSchema from '../models/cart.model.js'
 
 class CartMongooseDao{
 
-    async getOne(pid){
-        const cartDocument = await cartSchema.findOne({_id: pid}).populate('products._id');
-
+    async getOne(cid){
+        try {
+            
+        const cartDocument = await cartSchema.findOne({_id: cid}).populate('products._id');
         return{
             id: cartDocument._id,
             products: cartDocument.products.map(item => {
@@ -23,6 +24,9 @@ class CartMongooseDao{
                 }
             })
         };
+        } catch (error) {
+            throw new Error(`Error al buscar el carrito con id ${cid}, verifique si es correcto.`);
+        }
     }
 
     async create(data) {
@@ -38,7 +42,7 @@ class CartMongooseDao{
                 })
             }
         } catch (error) {
-            throw error;
+            throw new Error(`Error al querer generar el carrito.`);
         }
     };
 
@@ -56,8 +60,12 @@ class CartMongooseDao{
                     { $push: { products: { _id: pid, quantity: 1 } } }
                 );
             };
-
             const cartDocument = await cartSchema.findById(cid);
+
+            if(!cartDocument)
+            {
+                return `Error al querer actualizar el carrito con id ${cid}`
+            }
 
             return {
                 id: cartDocument._id,
@@ -69,7 +77,7 @@ class CartMongooseDao{
                 })
             }
         } catch (error) {
-            throw error;
+            throw new Error(`Error al querer actualizar el carrito con id ${cid}`);
         }
     }
 
@@ -85,7 +93,7 @@ class CartMongooseDao{
                 id: document._id
             };
         } catch (error) {
-            throw error;
+            throw new Error(`Error al querer eliminar el producto id ${pid} del carrito con id ${cid}.`);
         }
     }
 
@@ -100,15 +108,15 @@ class CartMongooseDao{
                 id: document._id
             }
         } catch (error) {
-            throw error;
+            throw new Error(`Error al querer eliminar los productos del carrito con id ${id}.`);
         }
     }
 
-    async updateProductsByCartId(item, cid) {
+    async updateProducts(item, cid) {
         try {
             const document = await cartSchema.findOneAndUpdate(
                 { _id: cid },
-                { $set: { 'products': item.products } },
+                { $set: { products: item } },
                 { new: true }
             );
             return {
@@ -121,9 +129,9 @@ class CartMongooseDao{
                 })
             }
         } catch (error) {
-            throw error;
+            throw new Error(`Error al actualizar el carrito con id ${cid}.`);
         }
-    }
+    };
 
     async updateProductByCartId(item, cid, pid) {
         try {
@@ -142,7 +150,7 @@ class CartMongooseDao{
                 })
             }
         } catch (error) {
-            throw error;
+            throw new Error(`Error al querer actualizar el carrito con id ${cid}`);
         }
     };
 }

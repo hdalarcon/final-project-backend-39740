@@ -1,16 +1,5 @@
 import CartManager from "../manager/cartManager.js";
 
-
-export const getAll = async (req,res)=>{
-    try {
-        const manager = new CartManager();
-        const carts = await manager.getAll();
-        res.send({ status: 'success', carts });
-    } catch (error) {
-        res.status(400).send({error: error.message});
-    }
-};
-
 export const getOne = async (req,res)=>{
     try {
         const { cid } = req.params;
@@ -81,7 +70,7 @@ export const updateProductsByCartId = async (req, res) => {
         const { body } = req;
         const { cid } = req.params;
         const manager = new CartManager();
-        const result = await manager.updateProductsByCartId(body, cid);
+        const result = await manager.updateProducts(body, cid);
         res.send({status: 'sucess',msg:'Cart updated',result});
     } catch (error) {
         res.status(500).send({ error: error.message });

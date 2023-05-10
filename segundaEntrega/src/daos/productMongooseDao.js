@@ -6,19 +6,6 @@ const SORTVALUE = {
 };
 
 class ProductMongooseDao{
-    async find(){
-        const productDocument = await productSchema.find();
-        return productDocument.map(product => ({
-            id: product._id,
-            title: product.title,
-            code: product.code,
-            price: product.price,
-            status: product.status,
-            stock: product.stock,
-            category: product.category,
-            thumbnail: product.thumbnail
-        }));
-    }
 
     async paginate(paginate){
         try {
@@ -53,17 +40,22 @@ class ProductMongooseDao{
     }
 
     async getOne(pid){
-        const productDocument = await productSchema.findOne({_id: pid});
-        return {
-            id: productDocument._id,
-            title: productDocument.title,
-            description: productDocument.description,
-            code: productDocument.code,
-            price: productDocument.price,
-            status: productDocument.status,
-            stock: productDocument.stock,
-            category: productDocument.category,
-            thumbnail: productDocument.thumbnail
+        try {
+            const productDocument = await productSchema.findOne({_id: pid});
+   
+            return {
+                id: productDocument._id,
+                title: productDocument.title,
+                description: productDocument.description,
+                code: productDocument.code,
+                price: productDocument.price,
+                status: productDocument.status,
+                stock: productDocument.stock,
+                category: productDocument.category,
+                thumbnail: productDocument.thumbnail
+            }
+        } catch (error) {
+            throw new Error(`Error al buscar el producto con id ${pid}`)
         }
     }
 
