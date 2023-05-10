@@ -28,14 +28,16 @@ class ProductMongooseDao{
                 category: item.category,
                 thumbnail: item.thumbnail
             }));
+            console.log(rest.totalPages)
+            if(page > rest.totalPages || page < 0 || isNaN(page) )
+            { return console.log({ message: `Error al ingresar el numero de pagina.` });}
 
             rest.prevLink = rest.hasPrevPage ? `http://localhost:8080/api/products?page=${rest.prevPage}&limit=${limit}&sort=${sort}` : ''
             rest.nextLink = rest.hasNextPage ? `http://localhost:8080/api/products?page=${rest.nextPage}&limit=${limit}&sort=${sort}` : ''
 
             return { payload: products, ...rest };
         } catch (error) {
-            console.error(error);
-            throw error;
+            throw new Error('Error al realizar la paginacion.');
         }
     }
 
@@ -60,33 +62,40 @@ class ProductMongooseDao{
     }
 
     async create(data){
-        const productDocument = await productSchema.create(data);
-        return {
-            id: productDocument._id,
-            title: productDocument.title,
-            description: productDocument.description,
-            code: productDocument.code,
-            price: productDocument.price,
-            status: productDocument.status,
-            stock: productDocument.stock,
-            category: productDocument.category,
-            thumbnail: productDocument.thumbnail
+        try {
+            const productDocument = await productSchema.create(data);
+            return {
+                id: productDocument._id,
+                title: productDocument.title,
+                description: productDocument.description,
+                code: productDocument.code,
+                price: productDocument.price,
+                status: productDocument.status,
+                stock: productDocument.stock,
+                category: productDocument.category,
+                thumbnail: productDocument.thumbnail
+            }
+        } catch (error) {
+            throw new Error(`Error al crear el producto.`);
         }
     }
 
     async updateOne(pid, data){
-        const productDocument = await productSchema.findOneAndUpdate({ _id: pid }, data, { new: true});
-
-        return {
-            id: productDocument._id,
-            title: productDocument.title,
-            description: productDocument.description,
-            code: productDocument.code,
-            price: productDocument.price,
-            status: productDocument.status,
-            stock: productDocument.stock,
-            category: productDocument.category,
-            thumbnail: productDocument.thumbnail
+        try {
+            const productDocument = await productSchema.findOneAndUpdate({ _id: pid }, data, { new: true});
+            return {
+                id: productDocument._id,
+                title: productDocument.title,
+                description: productDocument.description,
+                code: productDocument.code,
+                price: productDocument.price,
+                status: productDocument.status,
+                stock: productDocument.stock,
+                category: productDocument.category,
+                thumbnail: productDocument.thumbnail
+            }
+        } catch (error) {
+            throw new Error(`Error al querer actualizar el producto con id ${pid}.`);
         }
     }
 
