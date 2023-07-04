@@ -5,7 +5,7 @@ const SORTVALUE = {
     'desc': -1
 };
 
-class ProductMongooseDao{
+class ProductMongooseRepository{
 
     async paginate(paginate){
         try {
@@ -28,7 +28,6 @@ class ProductMongooseDao{
                 category: item.category,
                 thumbnail: item.thumbnail
             }));
-            console.log(rest.totalPages)
             if(page > rest.totalPages || page < 0 || isNaN(page) )
             { return console.log({ message: `Error al ingresar el numero de pagina.` });}
 
@@ -107,4 +106,4 @@ class ProductMongooseDao{
 
 
 
-export default ProductMongooseDao;
+export default ProductMongooseRepository;

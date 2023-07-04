@@ -1,32 +1,32 @@
-import CartMongooseDao from "../../data/daos/cartMongooseDao.js";
+import container from "../../container.js";
 
 class CartManager{
     constructor(){
-        this.cartDao = new CartMongooseDao();
+        this.cartRepository = container.resolve('CartRepository');
     }
 
     async getOne(){
-        const cart = await this.cartDao.getAll();
+        const cart = await this.cartRepository.getAll();
         return cart;
     }
 
     async getOne(cid){
-        const cart = await this.cartDao.getOne(cid);
+        const cart = await this.cartRepository.getOne(cid);
         return cart;
     }
 
     async create(data){
-        const cart = await this.cartDao.create(data);
+        const cart = await this.cartRepository.create(data);
         return cart;
     }
 
     async updateOne(cid, pid){
-        return this.cartDao.updateOne(cid, pid);
+        return this.cartRepository.updateOne(cid, pid);
     }
 
     async deleteItem(cid, pid) {
         try {
-            return this.cartDao.deleteItem(cid, pid);
+            return this.cartRepository.deleteItem(cid, pid);
         } catch (error) {
             throw error;
         }
@@ -34,7 +34,7 @@ class CartManager{
 
     async deleteProduct(cid, pid) {
         try {
-            return this.cartDao.deleteProduct(cid, pid);
+            return this.cartRepository.deleteProduct(cid, pid);
         } catch (error) {
             throw error;
         }
@@ -42,7 +42,7 @@ class CartManager{
 
     async delete(id) {
         try {
-            return this.cartDao.delete(id);
+            return this.cartRepository.delete(id);
         } catch (error) {
             throw error;
         }
@@ -50,7 +50,7 @@ class CartManager{
 
     async updateProducts(item, cid) {
         try {
-            return this.cartDao.updateProducts(item, cid);
+            return this.cartRepository.updateProducts(item, cid);
         } catch (error) {
             throw error;
         }
@@ -58,7 +58,7 @@ class CartManager{
 
     async updateProductByCartId(item, cid, pid) {
         try {
-            return this.cartDao.updateProductByCartId(item, cid, pid);
+            return this.cartRepository.updateProductByCartId(item, cid, pid);
         } catch (error) {
             throw error;
         }

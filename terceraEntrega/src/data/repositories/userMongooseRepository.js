@@ -1,6 +1,6 @@
 import userSchema from "../models/user.model.js";
 
-class UserMongooseDao
+class UserMongooseRepository
 {
   async paginate(paginate)
   {
@@ -96,4 +96,4 @@ class UserMongooseDao
   }
 }
 
-export default UserMongooseDao;
+export default UserMongooseRepository;

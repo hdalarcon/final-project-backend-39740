@@ -1,6 +1,6 @@
 import cartSchema from '../models/cart.model.js'
 
-class CartMongooseDao{
+class CartMongooseRepository{
 
     async getOne(cid){
         try {
@@ -155,4 +155,4 @@ class CartMongooseDao{
     };
 }
 
-export default CartMongooseDao;
+export default CartMongooseRepository;

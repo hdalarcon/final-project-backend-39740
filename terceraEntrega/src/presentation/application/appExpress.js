@@ -6,8 +6,8 @@ import productRouter from '../routes/productRouter.js';
 import sessionRouter from '../routes/sessionRouter.js';
 import userRouter from '../routes/userRouter.js';
 import roleRouter from '../routes/roleRouter.js';
-import mongoStore from "connect-mongo";
-import session from "express-session";
+// import mongoStore from "connect-mongo";
+// import session from "express-session";
 
 import errorHandler from '../middlewares/errorHandler.js';
 
@@ -19,15 +19,15 @@ class AppExpress
         this.app.use(express.json());
         this.app.use(express.urlencoded({extended: true}));
         this.app.use(cookieParser());
-        this.app.use(session({
-            store: mongoStore.create({
-              mongoUrl: process.env.MONGO_DB_URI,
-              ttl: 50
-            }),
-            secret: 'CoderS3cR3tC0D3',
-            resave: false,
-            saveUninitialized: false
-        }));
+        // this.app.use(session({
+        //     store: mongoStore.create({
+        //       mongoUrl: process.env.DB_URI,
+        //       ttl: 50
+        //     }),
+        //     secret: 'CoderS3cR3tC0D3',
+        //     resave: false,
+        //     saveUninitialized: false
+        // }));
     }
 
     build()

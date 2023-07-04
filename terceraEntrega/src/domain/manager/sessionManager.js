@@ -1,4 +1,4 @@
-import UserMongooseDao from "../../domain/manager/sessionManager.js";
+import container from '../../container.js'
 import {createHash, generateToken, isValidPassword} from "../../utils/index.js";
 import userCreateValidation from "../validations/user/userCreateValidation.js";
 import loginValidation from "../validations/session/loginValidation.js";
@@ -7,14 +7,14 @@ class SessionManager
 {
   constructor()
   {
-     this.userDao = new UserMongooseDao();
+     this.userRepository = container.resolve('UserRepository');
   }
 
   async login(email, password)
   {
     await loginValidation.parseAsync({ email, password });
 
-    const user = await this.userDao.getOneByEmail(email);
+    const user = await this.userRepository.getOneByEmail(email);
     const isHashedPassword = await isValidPassword(password, user.password);
 
     if (!isHashedPassword)
@@ -34,7 +34,7 @@ class SessionManager
       password: await createHash(payload.password, 10)
     }
 
-    const user  = await this.userDao.create(dto);
+    const user  = await this.userRepository.create(dto);
 
     return { ...user, password: undefined};
   }

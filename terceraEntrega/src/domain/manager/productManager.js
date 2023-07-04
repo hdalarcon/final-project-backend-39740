@@ -1,34 +1,34 @@
-import ProductMongooseDao from "../../data/daos/productMongooseDao.js";
+import container from '../../container.js';
 
 class ProductManager{
     constructor(){
-        this.productDao = new ProductMongooseDao();
+        this.productRepository =  container.resolve('ProductRepository');
     }
 
     async find(){
-        return this.productDao.find();
+        return this.productRepository.find();
     }
 
     async paginate(paginate){
-        return this.productDao.paginate(paginate);
+        return this.productRepository.paginate(paginate);
     }
 
 
     async create(data){
-        const product = await this.productDao.create(data);
+        const product = await this.productRepository.create(data);
         return product; 
     }
 
     async getOne(pid){
-        return this.productDao.getOne(pid);
+        return this.productRepository.getOne(pid);
     }
 
     async updateOne(pid, data){
-        return this.productDao.updateOne(pid, data);
+        return this.productRepository.updateOne(pid, data);
     }
 
     async deleteOne(pid){
-        return this.productDao.deleteOne(pid);
+        return this.productRepository.deleteOne(pid);
     }
 }
 
